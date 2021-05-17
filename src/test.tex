@@ -1,0 +1,16 @@
+\documentclass{article}
+\usepackage{listofitems}
+
+
+\newcommand\substr[3]{%
+  \begingroup\scantokens{\catcode`\#=12
+  \setsepchar{##}%
+  \readlist\parsedinput{#1}%
+  \foreachitem\x\in\parsedinput{%
+    \ifnum\xcnt=1\else s\fi\x%
+  }}
+  \endgroup
+}
+\begin{document}
+\substr{a#YbXYc}{XY}{$\to$}
+\end{document}
