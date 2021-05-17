@@ -1,17 +1,14 @@
-PDF=pdf/belleville.pdf
+.PHONY: all build clean
 
-.PHONY: all pdf pdfdir clean
+all: build
 
-all: pdf
+build:
+	${MAKE} -C src all
 
-pdfdir:
-	mkdir pdf
-
-pdf: pdfdir ${PDF}
-
-pdf/%.pdf: src/%.tex
-	pdflatex -output-directory pdf $<
+pdf: build
+	mkdir -p pdf
+	cp src/*.pdf pdf/
 
 clean:
-	rm -f pdf/*.pdf pdf/*.log pdf/*.aux
+	${MAKE} -C src clean
 
