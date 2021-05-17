@@ -1,5 +1,5 @@
-SRC=*.tex
-PDF=${SRC:.tex=.pdf}
+SRC = ${wildcard *.tex}
+PDF = ${SRC:.tex=.pdf}
 
 .PHONY: all clean
 
